@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de IW-II</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="img/js.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            height: 300px;
+            /* Altura fixa para manter a simetria na grid */
+            margin-bottom: 20px;
+        }
+
+        .card-container:hover {
+            cursor: pointer;
+        }
+
+        .card-flip {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .face-frente,
+        .face-verso {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+        }
+
+        .face-frente {
+            background: white;
+        }
+
+        .face-verso {
+            background: #e9ecef;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-3" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="img/js.png" alt="Logo do JavaScript"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Exercícios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="exercicios">
+        <div class="container mt-3 text-center">
+            <p class="fs-1 text-primary fw-bold">
+                Exercícios de IW-II
+            </p>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Par/Ímpar</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Par ou Ímpar</h5>
+                                <button onclick="ParOuImpar(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Verificar idade</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Verificar idade</h5>
+                                <button onclick="VerificarIdade(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Contagem de 1 a 10</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-2 fw-bold">Contagem de 1 a 10</h5>
+                                <p class="text-muted small">Abra o console</p>
+                                <button onclick="contagem(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Contagem regressiva</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-2 fw-bold">Contagem regressiva</h5>
+                                <p class="text-muted small">Abra o console</p>
+                                <button onclick="contagemRegressiva(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Card Exemplo 1 -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Tabuada</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-2 fw-bold">Tabuada</h5>
+                                <p class="text-muted small">Abra o console</p>
+                                <button onclick="tabuada(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Somatório</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-2 fw-bold">Somatório</h5>
+                                <p class="text-muted small">Abra o console</p>
+                                <button onclick="somatorio(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Número primo</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Número primo</h5>
+                                <button onclick="numeroPrimo(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Login</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-2 fw-bold">Login</h5>
+                                <p class="text-muted small">Nome: admin | Senha: 1234</p>
+                                <button onclick="login(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Card Exemplo 1 -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Soma de números positivos</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Soma de números positivos</h5>
+                                <button onclick="somaNumerosPositivos(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Adinhação</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Adivinhação</h5>
+                                <button onclick="adivinhacao(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Fatorial</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Fatorial</h5>
+                                    <button onclick="fatorial(event)" class="btn btn-primary w-100">Rodar
+                                        Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Validação de notas</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Validação de notas</h5>
+                                <button onclick="validacaoNotas(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UMA LINHA COM 3 COLUNAS (Cards maiores) -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Média de notas</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Média de notas</h5>
+                                <button onclick="mediaNotas(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Caixa eletrônico</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Caixa eletrônico</h5>
+                                <button onclick="caixaEletronico(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card-container">
+                        <div class="card-flip" onclick="this.classList.toggle('is-flipped')">
+
+                            <!-- FRENTE -->
+                            <div class="face-frente text-center">
+                                <h5 class="card-title text-primary fs-4">Números ímpares</h5>
+                                <p class="text-muted small">Clique no card para virar</p>
+                            </div>
+
+                            <!-- VERSO -->
+                            <div class="face-verso text-center">
+                                <h5 class="text-primary mb-4 fw-bold">Números ímpares</h5>
+                                <button onclick="numerosImpares(event)" class="btn btn-primary w-100">Rodar
+                                    Script</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function ParOuImpar(event) {
+            event.stopPropagation();
+
+            let numero = prompt("Digite um número?");
+            if (numero === null || numero === "") return;
+
+            if (numero % 2 == 1) {
+                alert("Este número é ímpar.");
+            } else {
+                alert("Este número é par.");
+            }
+        }
+
+        function VerificarIdade(event) {
+            event.stopPropagation();
+
+            let idade = prompt("Digite a sua idade:")
+            if (idade >= 18 && idade <= 130) {
+                alert("Você é maior de idade")
+            } else if (idade > 130 || idade < 0) {
+                alert("Sua idade é inválida")
+            } else {
+                alert("Você é de menor")
+            }
+        }
+
+        function contagem(event) {
+            event.stopPropagation();
+
+            for (var i = 1; i < 11; i++) {
+                console.log(i);
+            }
+        }
+
+        function contagemRegressiva(event) {
+            event.stopPropagation();
+
+            let i = 10;
+            while (i > -1) {
+                console.log(i);
+                i--;
+            }
+        }
+
+        function tabuada(event) {
+            event.stopPropagation();
+
+            let numero = prompt("Digite um número:")
+            for (var i = 0; i < 11; i++) {
+                console.log(numero + " x " + i + " = " + numero * i)
+            }
+        }
+
+        function somatorio(event) {
+            event.stopPropagation();
+
+            let numero = prompt("Digite um número:")
+            let inicio = 1
+            let somatorio = 0
+            while (inicio <= numero) {
+                somatorio = somatorio + inicio
+                console.log(somatorio)
+                inicio++
+            }
+        }
+
+        function numeroPrimo(event) {
+            event.stopPropagation();
+
+            let numero = parseInt(prompt("Digite um número:"));
+            let ehPrimo = true;
+
+            if (numero <= 1) {
+                ehPrimo = false;
+            } else {
+                for (let i = 2; i < numero; i++) {
+                    if (numero % i === 0) {
+                        ehPrimo = false;
+                        break;
+                    }
+                }
+            }
+
+            if (ehPrimo) {
+                alert(numero + " é um número primo.");
+            } else {
+                alert(numero + " não é um número primo.");
+            }
+        }
+
+        function login(event) {
+            event.stopPropagation();
+
+            const usuarioCorreto = "admin";
+            const senhaCorreta = "1234";
+
+            let usuario = prompt("Digite o nome de usuário:");
+            let senha = prompt("Digite a senha:");
+
+            while (usuario !== usuarioCorreto || senha !== senhaCorreta) {
+                alert("Login ou senha incorretos! Tente novamente.");
+
+                usuario = prompt("Digite o nome de usuário:");
+                senha = prompt("Digite a senha:");
+            }
+
+            alert("Login realizado com sucesso!");
+        }
+
+        function somaNumerosPositivos(event) {
+            event.stopPropagation();
+
+            let soma = 0;
+            let numero = 0;
+
+            while (true) {
+                numero = parseFloat(prompt("Digite um número (digite um número negativo para encerrar e ver o total):"));
+
+                if (numero < 0) {
+                    break;
+                }
+
+                soma += numero;
+            }
+
+            alert("A soma total dos números positivos é: " + soma);
+        }
+
+        function adivinhacao(event) {
+            event.stopPropagation();
+
+            let numeroAleatorio = 3;
+            let palpite = 0;
+
+            while (palpite !== numeroAleatorio) {
+                palpite = parseInt(prompt("Adivinhe o número de 1 a 10:"));
+
+                if (palpite < numeroAleatorio) {
+                    alert("Muito baixo! Tente um número maior.");
+                } else if (palpite > numeroAleatorio) {
+                    alert("Muito alto! Tente um número menor.");
+                }
+            }
+
+            alert("Parabéns! Você acertou, o número era " + numeroAleatorio);
+        }
+
+        function fatorial(event) {
+            event.stopPropagation();
+
+            let numero = parseInt(prompt("Digite um número para calcular o fatorial:"));
+
+            if (numero < 0) {
+                alert("Não existe fatorial para números negativos.");
+            } else {
+                let fatorial = 1;
+
+                for (let i = 2; i <= numero; i++) {
+                    fatorial *= i;
+                }
+
+                alert("O fatorial de " + numero + " é " + fatorial);
+            }
+        }
+
+        function validacaoNotas(event) {
+            event.stopPropagation();
+
+            let nota = parseFloat(prompt("Digite uma nota de 0 a 10:"));
+
+            while (nota < 0 || nota > 10 || isNaN(nota)) {
+                nota = parseFloat(prompt("Nota inválida! Por favor, digite uma nota entre 0 e 10:"));
+            }
+
+            alert("Nota válida registrada: " + nota);
+        }
+
+        function mediaNotas(event) {
+            event.stopPropagation();
+
+            let nota1 = parseFloat(prompt("Digite a primeira nota:"))
+            let nota2 = parseFloat(prompt("Digite a segunda nota:"))
+            let nota3 = parseFloat(prompt("Digite a terceira nota:"))
+            let media = (nota1 + nota2 + nota3) / 3
+            if (media >= 7) {
+                alert("Aprovado")
+            } else {
+                alert("Reprovado")
+            }
+        }
+
+        function caixaEletronico(event) {
+            event.stopPropagation();
+
+            let valor = parseInt(prompt("Digite o valor que deseja sacar:"));
+            let notas = [100, 50, 20, 10, 5, 2, 1];
+            let resultado = "Cédulas para o saque:\n";
+
+            for (let i = 0; i < notas.length; i++) {
+                let cedula = notas[i];
+                let quantidade = Math.floor(valor / cedula);
+
+                if (quantidade > 0) {
+                    resultado += quantidade + " nota(s) de R$ " + cedula + "\n";
+                    valor = valor % cedula;
+                }
+            }
+
+            alert(resultado);
+        }
+
+        function numerosImpares(event) {
+            event.stopPropagation();
+
+            let numeroLimite = parseInt(prompt("Digite um número:"));
+            let impares = "";
+
+            for (let i = 1; i <= numeroLimite; i++) {
+                if (i % 2 !== 0) {
+                    impares += i + " ";
+                }
+            }
+
+            alert("Números ímpares de 1 até " + numeroLimite + ":\n" + impares);
+        }
+    </script>
+</body>
+
+</html>

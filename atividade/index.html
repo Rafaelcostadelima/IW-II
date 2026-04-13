@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é DOM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="titulo">
+        <h1>Atividade de IW-II</h1>
+    </div>
+
+    <!-- O que é um nó (brevemente) e o que é DOM -->
+    <div class="sobre">
+        <p>O HTML é como se fosse a planta de uma casa: tem paredes, portas, móveis, etc. O problema, é que tudo é
+            estático, nada se mexe. A função do DOM (Document Object Model) é de dar vida a essa planta.
+            Com o DOM, o navegador lê o HTML como uma árvore: &lt;body&gt; com um galho, &lt;h1&gt; como um ramo e
+            &lt;button&gt; como uma folha.
+        <p>JavaScript usa o DOM como um controle remoto. Com ele, o JS pode mandar que o DOM entenda quando que botão
+            for clicado para mudar de cor de fundo, por exemplo.</p>
+    </div>
+
+    <!-- O que é um nó. Explique atributos e elementos etc. -->
+    <div class="no">
+        <p>Tecnicamente todos os elementos de um site (até o que a gente não vê) são nós (node).</p>
+        <ul class="lista">
+            <li>
+                <p><strong>Elementos</strong> são aquelas divisões: &lt;div&gt;, &lt;section&gt;, &lt;body&gt; etc. Eles
+                    servem como divisões (caixas) que organizam o conteúdo. É neles que você geralmente clica ou aplica
+                    estilos.</p>
+            </li>
+            <li>
+                <p><strong>Atributos</strong> são as informações extras que dicam dentro da tag de abertura de um
+                    elemento,
+                    como o <i>scr</i> ou <i>class</i> ou <i>href</i> etc.</p>
+            </li>
+            <li>
+                <p><strong>Textos</strong> já são o conteúdo real, as palavras que aparecem na tela. Tipo o "Clique
+                    aqui!"
+                    na tag "<code>&lt;button&gt;Clique aqui!&lt;/button&gt;</code>"</p>
+            </li>
+        </ul>
+        <p>Um exemplo que resumo esse contexto de elementos, atributos e textos de um nó utilizando o Document Object
+            Model:
+        </p>
+        <p>No código <code>&lt;a href='https://github.com/'&gt;Visite aqui!&lt;/a&gt;</code> :</p>
+        <ul class="lista">
+            <li><strong>Nó do elemento:</strong> <code>&lt;a&gt;</code></li>
+            <li><strong>Nó de atributo:</strong> <code>href='https://github.com/'</code></li>
+            <li><strong>Nó de texto:</strong><code> "Visite aqui!"</code></li>
+        </ul>
+    </div>
+    <div class="metodos">
+        <p>Há três metódos que são como <i>ferramentas de busca</i> que o JavaScript usa para encontrar os nós dentro da
+            "árvore" do DOM. Cada um tem a sua especialidade:</p>
+        <ul class="lista">
+            <li>
+                <p><code>"<strong>getElementById()</strong>"</code>: Ele busca pelo atributo de ID que se dá a um
+                    elemento no HTML. Ele retorna o único elemento que possui aquele o ID (caso não haja, <i>null</i>).
+                </p>
+            </li>
+            <li>
+                <p><code>"<strong>querySelector()</strong>"</code>: é o método mais moderno e versátil, pois usa a mesma
+                    sintaxe dee seletores do CSS. O desenvolvedor pode utilizar tag, classe, ID ou qualquer combinação
+                    (ex.: <code>.botao-azul</code> , <code>#topo</code> etc.). Apenas o primeiro elemento queele
+                    encontrar que combine com a busca.</p>
+            </li>
+            <li>
+                <p><code>"<strong>querySelectorAll()</strong>"</code> : Funciona de forma parecida com o
+                    <code>querySelector</code>, porém, ele não para no primeiro resultado que consegue, ele verifica
+                    todos os elementos que batem com o seletor CSS que foi indicado para ele e os retorna em formato de
+                    uma <strong>NodeList</strong> (simplesmente só uma lista de elementos). Para poder acessar cada um,
+                    geralmente precisa de um laço de repetição com o <code>.forEach()</code>.
+                <p>
+            </li>
+        </ul>
+    </div>
+    <div class="diferenca">
+        <p>Há dois elementos que podem ser confundidos no DOM: <strong><i>innerHTML</i></strong> e
+            <strong><i>innerText</i></strong>.
+        </p>
+        <p>A principal diferença entre esses elementos está em como o JavaScript trata o que está dentro da tag: um vê o
+            código e o outro vê apenas o texto puro.</p>
+        <ul class="lista">
+            <li>
+                <p><code>"<strong>innerHTML</strong>"</code>: Ele interpreta as strings como HTML real. Se você colocar
+                    tags dentro da string, o navegador vai renderizá-las (criar novos elementos). Ele lê ou aktera todo
+                    o conteúdo, incluindo as tags HTML internas.</p>
+            </li>
+            <li>
+                <p><code>"<strong>innerText</strong>"</code>: Ele trata tudo como texto simples. Mesmo que você escreva
+                    tags HTML, elas aparecerão escritas literalmente na tela, como se fossem parte de uma frase. Lê ou
+                    altera apenas o texto visível que o usuário final enxerga</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="eventos">
+        <p>Os eventos funcionam com o "sentido de tato" (interatividade) da página web. Eles são sinais enviados pelo
+            navegador para o seu código JavaScript avisando que algo aconteceu na interface (como um clique, um
+            movimento do mouse etc.). Sem eventos, os sites seriam apenas um cartaz estático, sem vida, interatividade e
+            tudo mais. Com eles, se torna um software que reage ao usuário, dando vida e interatividade.</p>
+        <li>
+            <p><code>"<strong>onclick</strong>"</code>: ocorre quando o usuário clica em um elemento (botão, link,
+                imagem, etc.). É o evento mais comum no mundo web. Normalmente é usado para enviar um formulário, abrir
+                um menu ou mudar a cr de um fundo, etc.</p>
+        </li>
+        <li>
+            <p><code>"<strong>onchange</strong>"</code>: ocorre quando o valor de um elemento de formulário é alterado e
+                o usuário "sai" dele (perde o foco). É usado normalmente para validar se um e-mail foi digitado
+                corretamente ou atualizar o preço total quando alguém muda a quantidade de um ponto num carrinho.</p>
+        </li>
+        <li>
+            <p><code>"<strong>onmouseover</strong>"</code>: ocorre no momento em que o ponteiro do mouse entra na área de um elemento. Por exemplo: mostrar um balão de ajuda (tooltip), destacar um card ou mudar a cor de um link para dar feedback visual</p>
+        </li>
+    </div>
+
+    <div class="botao">
+        <a href="pagina2.html">Ir para a prática</a>
+    </div>
+</body>
+
+</html>

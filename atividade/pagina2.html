@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prática</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+
+<body id="corpo">
+    <div class="titulo">
+        <h1>Atividade de IW-II - Prática</h1>
+    </div>
+
+    <div class="sobre">
+        <p id="texto">Sou o texto original</p>
+        <button onclick="mudarTexto()">Clique aqui!</button>
+    </div>
+
+    <div class="metodos">
+        <button onclick="mudarCor()">Mude a cor de fundo</button>
+        <div style="padding: 15px;"></div>
+        <button onclick="voltarNormal()">Voltar ao normal</button>
+    </div>
+
+    <div class="botao">
+        <a href="index.html">Voltar para o início</a>
+    </div>
+
+    <script>
+        function mudarTexto() {
+            document.getElementById("texto").innerText = "Texto alterado!";
+        }
+
+        function mudarCor() {
+            document.getElementById("corpo").style.backgroundColor = "aqua";
+        }
+
+        function voltarNormal() {
+            document.getElementById("corpo").style.backgroundColor = "white";
+            document.getElementById("texto").innerText = "Sou o texto original";
+        }
+    </script>
+</body>
+
+</html>

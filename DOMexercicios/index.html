@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios práticos de DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Exercício 1</h1>
+    <p id="paragrafo">Vou mudar!</p>
+    <button onclick="dandoTexto()">Clique aqui para digitar um outro texto</button>
+    <div class="botao">
+        <a href="pagina2.html">Próximo exercício</a>
+    </div>
+    <script>
+        function dandoTexto(){
+            let texto = prompt("Digite o texto: ")
+            document.getElementById("paragrafo").innerText = texto
+        }
+    </script>
+</body>
+</html>

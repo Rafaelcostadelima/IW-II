@@ -8,12 +8,25 @@
 </head>
 <body>
     <h1>Exercício 3</h1>
-    
+    <button onclick="verificarIdade(idade)">Conferir</button>
+    <p id="resultado"></p>
     <div class="botao">
-        <a href="pagina3.html">Próximo exercício</a>
+        <a href="pagina4.html">Próximo exercício</a>
     </div>
     <script>
+        let idade = prompt("Digite a sua idade: ")
         
+        function verificarIdade(idade) {
+            if (idade >= 18 && idade <= 120){
+                document.getElementById("resultado").innerText = "Você é maior de idade"
+            } else if (idade > 120){
+                document.getElementById("resultado").innerText = "Nunca vi ninguém com essa idade, mas tá bom"
+            } else if (idade <= 0){
+                document.getElementById("resultado").innerText = "Valor da idade não pode ser igual a 0 ou menor que isso"
+            } else{
+                document.getElementById("resultado").innerText = "Você é menor de idade"
+            }
+        }
     </script>
 </body>
 </html>

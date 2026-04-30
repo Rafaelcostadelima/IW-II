@@ -8,25 +8,33 @@
 </head>
 <body>
     <h1>Exercício 3</h1>
-    <button onclick="verificarIdade(idade)">Conferir</button>
-    <p id="resultado"></p>
+    <form id="formulario">
+        <label for="idade">Digite a sua idade</label> <br>
+        <input type="number" id="idade">
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="resultado">Você é </p>
     <div class="botao">
         <a href="pagina4.html">Próximo exercício</a>
     </div>
     <script>
-        let idade = prompt("Digite a sua idade: ")
+        const formulario = document.getElementById("formulario")
+        const idadeinicial = document.getElementById("idade")
+        const resultado = document.getElementById("resultado")
         
-        function verificarIdade(idade) {
+        formulario.addEventListener("submit", function(event){
+            event.preventDefault()
+            let idade = parseInt(idadeinicial.value)
             if (idade >= 18 && idade <= 120){
-                document.getElementById("resultado").innerText = "Você é maior de idade"
+                resultado.innerText = "Você é maior de idade"
             } else if (idade > 120){
-                document.getElementById("resultado").innerText = "Nunca vi ninguém com essa idade, mas tá bom"
+                resultado.innerText = "Você é de maior. Nunca vi ninguém com essa idade, mas tá bom"
             } else if (idade <= 0){
-                document.getElementById("resultado").innerText = "Valor da idade não pode ser igual a 0 ou menor que isso"
+                resultado.innerText = "Valor da idade não pode ser igual a 0 ou menor que 0"
             } else{
-                document.getElementById("resultado").innerText = "Você é menor de idade"
+                resultado.innerText = "Você é menor de idade"
             }
-        }
+        })
     </script>
 </body>
 </html>

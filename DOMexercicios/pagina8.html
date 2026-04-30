@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios práticos de DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="corpo">
+    <h1>Exercício 8</h1>
+    <form id="meuFormulario">
+        <label for="numeroDigitado">Digite um número:</label>
+        <br>
+        <input type="number" id="numeroDigitado" required>
+        <button type="submit">Inserir</button>
+    </form>
+    <p id="resultado"></p>
+    <div class="botao">
+        <a href="pagina9.html">Próximo exercício</a>
+    </div>
+    <script>
+        const formulario = document.getElementById("meuFormulario");
+        const inputNumero = document.getElementById("numeroDigitado");
+        const resultado = document.getElementById("resultado");
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault()
+            let numeroSalvo = parseInt(inputNumero.value);
+            if (numeroSalvo % 2 == 0){
+                resultado.innerText= "O número é par.";
+            } else{
+                resultado.innerText = "O número é ímpar.";
+            }
+        });
+    </script>
+</body>
+</html>

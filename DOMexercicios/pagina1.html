@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios práticos de DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Exercício 1</h1>
+    
+    <form id="formulario">
+        <label for="textoDigitado">Digite um texto para mudá-lo logo abaixo:</label> <br>
+        <input type="text" id="textoDigitado" required>
+        <button type="submit">Confirme</button>
+    </form>
+    
+    <p id="paragrafo">Vou mudar!</p>
+    
+    <div class="botao">
+        <a href="pagina2.html">Próximo exercício</a>
+    </div>
+    <script>
+        const formulario = document.getElementById("formulario");
+        const textoDigitado = document.getElementById("textoDigitado");
+        const paragrafo = document.getElementById("paragrafo");
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+            let texto = textoDigitado.value
+            paragrafo.innerText = texto
+        })
+    </script>
+</body>
+</html>

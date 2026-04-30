@@ -8,16 +8,30 @@
 </head>
 <body id="corpo">
     <h1>Exercício 5</h1>
+    <h2><strong>Teste</strong></h2>
     <button id="botao" onclick="alternarModo()">Modo claro</button>
     <div class="botao">
-        <a href="pagina6.html">Próximo exercício</a>
+        <a href="pagina6.html" id="proximo">Próximo exercício</a>
     </div>
     <script>
         function alternarModo(){
-            if ((document.getElementById("botao").innerText = "Modo claro") = true){
+            let botao = document.getElementById("botao")
+            let corpo = document.getElementById("corpo")
+            let proximo = document.getElementById("proximo")
 
+            if (botao.innerText === "Modo claro"){
+                corpo.style.backgroundColor = "black"
+                corpo.style.color = "white"
+                botao.innerText = "Modo escuro"
+                proximo.style.backgroundColor = "white"
+                proximo.style.color = "black"
+            } else{
+                corpo.style.backgroundColor = "white"
+                corpo.style.color = "black"
+                botao.innerText = "Modo claro"
+                proximo.style.backgroundColor = "black"
+                proximo.style.color = "white"
             }
-
         }
     </script>
 </body>

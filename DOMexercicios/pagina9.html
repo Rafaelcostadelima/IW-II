@@ -6,27 +6,31 @@
     <title>Exercicios práticos de DOM</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Exercício 2</h1>
+<body id="corpo">
+    <h1>Exercício 9</h1>
     <form id="formulario">
-        <label for="nomeDigitado">Digite o seu nome: </label>
+        <label for="senha">Crie uma senha:</label>
         <br>
-        <input type="text" id="nomeDigitado" required>
+        <input type="text" id="senha">
         <button type="submit">Enviar</button>
     </form>
-    <p id="texto">Olá, pessoa!</p>
+    <p id="resultado">Sua senha é: </p>
     <div class="botao">
-        <a href="pagina3.html">Próximo exercício</a>
+        <a href="pagina10.html">Próximo exercício</a>
     </div>
     <script>
         const formulario = document.getElementById("formulario")
-        const nomeDigitado = document.getElementById("nomeDigitado")
-        const texto = document.getElementById("texto")
+        const senhainicial = document.getElementById("senha")
+        const resultado = document.getElementById("resultado")
 
         formulario.addEventListener("submit", function(event) {
             event.preventDefault()
-            let nome = nomeDigitado.value
-            texto.innerText = "Olá, " + nome + "!"
+            let senha = senhainicial.value
+            if (senha.length >= 6) {
+                resultado.innerText = "Sua senha é: válida"
+            } else {
+                resultado.innerText = "Sua senha é: inválida"
+            }
         })
     </script>
 </body>

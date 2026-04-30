@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios práticos de DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="corpo">
+    <h1>Exercício 7</h1>
+    <ul id="minhaLista">
+        <li>Leite</li>
+        <li>Gás</li>
+        <li>Chocolate</li>
+        <li>Resistor</li>
+        <li>Fio</li>
+    </ul>
+    <div class="botao">
+        <a href="pagina8.html">Próximo exercício</a>
+    </div>
+    <script>
+        const itens = document.querySelectorAll("#minhaLista li")
+
+        itens.forEach(function(item) {
+            item.addEventListener("click", function() {
+                item.remove()
+            })
+            item.style.cursor = "pointer"
+        })
+    </script>
+</body>
+</html>

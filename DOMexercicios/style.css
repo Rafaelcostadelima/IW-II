@@ -1,7 +1,25 @@
+.botaoIndex{
+    width: 100%;
+    padding: 10px;
+}
+
 .botao{
     display: flex;
     justify-content: center;
     margin-top: 30px;
+}
+
+.linha{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
 }
 
 a{
@@ -10,4 +28,9 @@ a{
     border-radius: 10px;
     text-decoration: none;
     padding: 15px;
+}
+
+button{
+    margin-top: 10px;
+    margin: 5px;
 }

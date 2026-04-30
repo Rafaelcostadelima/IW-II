@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios práticos de DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="corpo">
+    <h1>Exercício 10</h1>
+    <input type="text" placeholder="Digite um nome aqui" id="nome">
+    <button id="botao">Adicionar produto</button>
+    <ul id="minhaLista"></ul>
+    <button id="contador">Contador de nomes</button>
+    <p id="resultado"></p>
+    <div class="botao">
+        <a href="index.html">Voltar ao começo</a>
+    </div>
+    <script>
+        const pessoa = document.getElementById("nome")
+        const botao = document.getElementById("botao")
+        const contador = document.getElementById("contador")
+        const resultado = document.getElementById("resultado")
+        const lista = document.getElementById("minhaLista")
+
+        botao.addEventListener("click", function() {
+            let nome = pessoa.value
+            if (nome !== "") {
+                let novoNome = document.createElement("li")
+                let textoNome = document.createElement("span");
+                textoNome.innerText = nome.charAt(0).toUpperCase() + nome.slice(1);
+                let botaoApagar = document.createElement("button")
+                let espaco = document.createElement("br")
+                botaoApagar.innerText = "Apagar"
+                botaoApagar.className = "btn-apagar"
+                botaoApagar.addEventListener("click", function(){
+                    textoNome.remove()
+                    botaoApagar.remove()
+                    espaco.remove()
+                })
+                novoNome.style.cursor = "pointer"
+                novoNome.innerText = nome
+                lista.appendChild(textoNome)
+                lista.appendChild(botaoApagar)
+                lista.appendChild(espaco)
+                contador.addEventListener("click", function(event){
+                    event.preventDefault()
+                    resultado.innerText = "Há " + (lista.children.length)/3 + " item(s)"
+                })
+                
+                pessoa.focus()
+                pessoa.value = ""
+            }
+        })
+    </script>
+</body>
+</html>

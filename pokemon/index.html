@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokédex Shiny Toggle</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f0f0f0; }
+        .search-container { margin: 20px; }
+        #pokemon-card { 
+            background: white; border-radius: 15px; padding: 20px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; 
+            display: none; width: 250px; 
+        }
+        img { width: 150px; height: 150px; }
+        button { padding: 8px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; background: #fff; }
+        button:hover { background: #e0e0e0; }
+        .btn-shiny { margin-top: 10px; background-color: #ffcc00; font-weight: bold; };
+        #poke-type {
+            display: inline-block;
+            text-transform: capitalize !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" id="pokemon-input" placeholder="Digite o nome...">
+        <button onclick="buscarPokemon()">Pesquisar</button>
+    </div>
+
+    <div id="pokemon-card">
+        <h2 id="poke-name"></h2>
+        <img id="poke-img" src="" alt="Pokemon">
+        <p>Tipo: <span id="poke-type"></span></p>
+        
+        <!-- Botão de Alternar -->
+        <button id="btn-toggle" class="btn-shiny" onclick="alternarShiny()">Ver Versão Shiny ✨</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
